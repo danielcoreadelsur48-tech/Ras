@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("MEMBER")
+  active    Boolean  @default(true)
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  image    String?
+  products Product[]
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  images      String      @default("[]")
+  categoryId  String
+  category    Category    @relation(fields: [categoryId], references: [id])
+  memberOnly  Boolean     @default(false)
+  visible     Boolean     @default(true)
+  stock       Int         @default(0)
+  featured    Boolean     @default(false)
+  orderItems  OrderItem[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  items         OrderItem[]
+  total         Float
+  status        String   @default("PENDING")
+  paymentMethod String
+  paymentId     String?
+  email         String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float
+}
+
+model Banner {
+  id       String  @id @default(cuid())
+  title    String?
+  subtitle String?
+  image    String
+  link     String?
+  active   Boolean @default(true)
+  position Int     @default(0)
+}
+
+model Sponsor {
+  id       String  @id @default(cuid())
+  name     String
+  image    String
+  link     String?
+  active   Boolean @default(true)
+  position Int     @default(0)
+}
+
+model Flayer {
+  id       String  @id @default(cuid())
+  image    String
+  link     String?
+  active   Boolean @default(true)
+  position Int     @default(0)
+}

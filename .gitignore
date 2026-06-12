@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build
+.next/
+dist/
+build/
+
+# Environment — NEVER commit real secrets
+.env
+.env.local
+.env.production
+
+# Prisma
+prisma/dev.db
+prisma/dev.db-journal
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log
+logs/
+tsconfig.tsbuildinfo
+
+# Playwright
+.playwright-mcp/
+
+# Temp
+.tmp/

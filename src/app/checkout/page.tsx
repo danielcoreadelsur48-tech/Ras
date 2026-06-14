@@ -76,6 +76,15 @@ export default function CheckoutPage() {
                 mode: 'payment',
                 amount: Math.round(total() * 100),
                 currency: 'usd',
+                appearance: {
+                  theme: 'night',
+                  variables: {
+                    colorPrimary: '#6ed1fd',
+                    colorBackground: '#1a1a1a',
+                    colorText: '#ffffff',
+                    borderRadius: '2px',
+                  },
+                },
               }}
             >
               <StripeForm onSuccess={(id) => createOrder('stripe', id)} />

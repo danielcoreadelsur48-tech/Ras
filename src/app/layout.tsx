@@ -3,6 +3,7 @@ import './globals.css'
 import { Providers } from './providers'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { MusicPlayer } from '@/components/layout/MusicPlayer'
 import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
@@ -20,8 +21,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body suppressHydrationWarning>
         <Providers>
           <Header categories={categories} />
-          <main>{children}</main>
-          <Footer />
+          <div className="pb-16">
+            <main>{children}</main>
+            <Footer />
+          </div>
+          <MusicPlayer />
         </Providers>
       </body>
     </html>

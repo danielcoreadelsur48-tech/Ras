@@ -82,3 +82,48 @@
     @apply font-display text-gold font-semibold;
   }
 }
+
+@layer utilities {
+  /* Cross-browser range input for music player */
+  .player-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    height: 16px;
+  }
+  .player-range::-webkit-slider-runnable-track {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+  }
+  .player-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: #6ed1fd;
+    margin-top: -4.5px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .player-range:hover::-webkit-slider-thumb {
+    background: #9ae4ff;
+  }
+  .player-range::-moz-range-track {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    border: none;
+  }
+  .player-range::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: #6ed1fd;
+    border: none;
+    cursor: pointer;
+  }
+  .player-range::-moz-range-thumb:hover {
+    background: #9ae4ff;
+  }
+}

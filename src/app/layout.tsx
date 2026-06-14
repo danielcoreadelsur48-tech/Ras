@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     'Tienda online de arte, impresiones, diseño gráfico, producción audiovisual y servicios creativos. Directorio digital y cultural.',
   keywords: ['arte', 'pintura', 'escultura', 'diseño gráfico', 'impresiones', 'cultura'],
+  icons: { icon: '/logo-ras.png' },
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

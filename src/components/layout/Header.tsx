@@ -90,6 +90,12 @@ export function Header({ categories }: HeaderProps) {
                   >
                     Mis pedidos
                   </Link>
+                  <Link
+                    href="/cuenta"
+                    className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                  >
+                    Mi cuenta
+                  </Link>
                   <button
                     onClick={() => signOut()}
                     className="w-full text-left px-4 py-2.5 text-sm text-white/50 hover:text-white hover:bg-white/5 transition-colors border-t border-white/5"
@@ -168,6 +174,7 @@ export function Header({ categories }: HeaderProps) {
                   <Link href="/admin" onClick={() => setMenuOpen(false)} className="block text-gold px-2 py-1.5 text-sm">Panel Admin</Link>
                 )}
                 <Link href="/orders" onClick={() => setMenuOpen(false)} className="block text-white/70 px-2 py-1.5 text-sm">Mis pedidos</Link>
+                <Link href="/cuenta" onClick={() => setMenuOpen(false)} className="block text-white/70 px-2 py-1.5 text-sm">Mi cuenta</Link>
                 <button onClick={() => signOut()} className="block text-white/50 px-2 py-1.5 text-sm">Cerrar sesión</button>
               </>
             ) : (

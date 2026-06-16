@@ -1,14 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/Button'
 
-export default function AdminAccountPage() {
+export default function CuentaPage() {
+  const { data: session, status } = useSession()
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+
+  if (status === 'unauthenticated') redirect('/login')
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,8 +45,9 @@ export default function AdminAccountPage() {
   }
 
   return (
-    <div className="max-w-md">
-      <h1 className="font-display text-2xl font-bold text-white mb-8">Mi cuenta</h1>
+    <div className="max-w-md mx-auto px-4 sm:px-6 py-12">
+      <h1 className="font-display text-2xl font-bold text-white mb-2">Mi cuenta</h1>
+      <p className="text-sm text-white/40 mb-8">{session?.user.email}</p>
 
       <form onSubmit={submit} className="card p-6 space-y-4">
         <div>

@@ -28,13 +28,10 @@ export function SponsorsCarousel({ sponsors }: Props) {
 
   if (!active.length) return null
 
-  const CARD_W = 200 // px por tarjeta (approx)
+  const CARD_W = 280 // px por tarjeta (approx)
 
   return (
     <section className="py-14 overflow-hidden">
-      {/* Borde degradado superior */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#c9a227]/30 to-transparent mb-10" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-10">
@@ -63,9 +60,9 @@ export function SponsorsCarousel({ sponsors }: Props) {
                 const card = (
                   <div
                     key={`${sponsor.id}-${i}`}
-                    className="flex-shrink-0 w-[200px] group"
+                    className="flex-shrink-0 w-[280px] group"
                   >
-                    <div className="relative h-28 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
+                    <div className="relative h-40 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
                       {/* Brillo en hover */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#c9a227]/5 to-transparent" />
                       <img
@@ -81,8 +78,8 @@ export function SponsorsCarousel({ sponsors }: Props) {
                 )
 
                 return sponsor.link ? (
-                  <Link href={sponsor.link} target="_blank" rel="noopener noreferrer" key={`${sponsor.id}-${i}`} className="flex-shrink-0 w-[200px] group block">
-                    <div className="relative h-28 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
+                  <Link href={sponsor.link} target="_blank" rel="noopener noreferrer" key={`${sponsor.id}-${i}`} className="flex-shrink-0 w-[280px] group block">
+                    <div className="relative h-40 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#c9a227]/5 to-transparent" />
                       <img
                         src={sponsor.image}
@@ -95,8 +92,8 @@ export function SponsorsCarousel({ sponsors }: Props) {
                     </p>
                   </Link>
                 ) : (
-                  <div key={`${sponsor.id}-${i}`} className="flex-shrink-0 w-[200px] group">
-                    <div className="relative h-28 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
+                  <div key={`${sponsor.id}-${i}`} className="flex-shrink-0 w-[280px] group">
+                    <div className="relative h-40 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#c9a227]/5 to-transparent" />
                       <img
                         src={sponsor.image}

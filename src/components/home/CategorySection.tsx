@@ -32,7 +32,7 @@ export function CategorySection({ categories }: CategorySectionProps) {
                   src={cat.image}
                   alt={cat.name}
                   fill
-                  className="object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
+                  className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />

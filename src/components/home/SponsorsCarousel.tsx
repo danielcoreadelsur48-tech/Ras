@@ -68,7 +68,7 @@ export function SponsorsCarousel({ sponsors }: Props) {
                       <img
                         src={sponsor.image}
                         alt={sponsor.name}
-                        className="max-w-full max-h-full object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 relative z-10"
+                        className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 relative z-10"
                       />
                     </div>
                     <p className="text-center text-xs text-white/30 group-hover:text-white/60 transition-colors mt-2 truncate">
@@ -84,7 +84,7 @@ export function SponsorsCarousel({ sponsors }: Props) {
                       <img
                         src={sponsor.image}
                         alt={sponsor.name}
-                        className="max-w-full max-h-full object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 relative z-10"
+                        className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 relative z-10"
                       />
                     </div>
                     <p className="text-center text-xs text-white/30 group-hover:text-white/60 transition-colors mt-2 truncate">
@@ -98,7 +98,7 @@ export function SponsorsCarousel({ sponsors }: Props) {
                       <img
                         src={sponsor.image}
                         alt={sponsor.name}
-                        className="max-w-full max-h-full object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 relative z-10"
+                        className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 relative z-10"
                       />
                     </div>
                     <p className="text-center text-xs text-white/30 group-hover:text-white/60 transition-colors mt-2 truncate">

@@ -34,9 +34,9 @@
     pointer-events: none;
     z-index: 0;
     background:
-      radial-gradient(ellipse 55% 45% at 20% 30%, rgba(255, 60, 60, 0.38), transparent 70%),
-      radial-gradient(ellipse 50% 40% at 75% 60%, rgba(60, 200, 80, 0.30), transparent 70%),
-      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(60, 120, 255, 0.38), transparent 70%);
+      radial-gradient(ellipse 55% 45% at 20% 30%, rgba(255, 60, 60, 0.28), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 75% 60%, rgba(60, 200, 80, 0.22), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(60, 120, 255, 0.28), transparent 70%);
     animation:
       rgbBlobR 28s ease-in-out infinite,
       rgbBlobG 34s ease-in-out infinite reverse,

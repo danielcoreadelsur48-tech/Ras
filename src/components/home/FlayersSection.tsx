@@ -43,7 +43,7 @@ export function FlayersSection({ flayers }: { flayers: Flayer[] }) {
       `}</style>
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {visible.map((flayer, i) => {
-          const card = (
+          const inner = (
             <div className={`flayer-card flayer-card-${i % FLAYER_COLORS.length} aspect-[3/4] relative`}>
               <img
                 src={flayer.image}
@@ -57,7 +57,6 @@ export function FlayersSection({ flayers }: { flayers: Flayer[] }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary text-sm px-5 py-2 rounded"
-                    onClick={(e) => e.stopPropagation()}
                   >
                     {flayer.buttonLabel}
                   </a>
@@ -65,6 +64,11 @@ export function FlayersSection({ flayers }: { flayers: Flayer[] }) {
               )}
             </div>
           )
+
+          // Si hay buttonLabel el botón ya maneja la navegación — no envolver en <a> extra
+          if (flayer.buttonLabel && flayer.link) {
+            return <div key={flayer.id}>{inner}</div>
+          }
 
           return flayer.link ? (
             <a
@@ -74,10 +78,10 @@ export function FlayersSection({ flayers }: { flayers: Flayer[] }) {
               rel="noopener noreferrer"
               className="block"
             >
-              {card}
+              {inner}
             </a>
           ) : (
-            <div key={flayer.id}>{card}</div>
+            <div key={flayer.id}>{inner}</div>
           )
         })}
       </div>

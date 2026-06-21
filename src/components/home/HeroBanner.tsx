@@ -26,7 +26,7 @@ export function HeroBanner({ banners }: HeroBannerProps) {
   const banner = active[current]
 
   return (
-    <div className="relative w-full h-[400px] md:h-[520px] overflow-hidden bg-surface">
+    <div className="relative w-full h-[260px] sm:h-[380px] md:h-[520px] overflow-hidden bg-surface">
       <Image
         src={banner.image}
         alt={banner.title ?? 'Banner'}
@@ -46,7 +46,7 @@ export function HeroBanner({ banners }: HeroBannerProps) {
               <p className="section-subtitle mb-3">{banner.subtitle}</p>
             )}
             {banner.title && (
-              <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+              <h1 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3 md:mb-6">
                 {banner.title}
               </h1>
             )}

@@ -12,11 +12,19 @@ export function SponsorsCarousel({ sponsors }: Props) {
   const active = sponsors.filter((s) => s.active).sort((a, b) => a.position - b.position)
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [cardW, setCardW] = useState(280)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Duplicamos para loop infinito suave
   const items = active.length > 0 ? [...active, ...active] : []
   const total = active.length
+
+  useEffect(() => {
+    const update = () => setCardW(window.innerWidth < 640 ? window.innerWidth - 32 : 280)
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
 
   useEffect(() => {
     if (total <= 1 || paused) return
@@ -27,8 +35,6 @@ export function SponsorsCarousel({ sponsors }: Props) {
   }, [total, paused])
 
   if (!active.length) return null
-
-  const CARD_W = 280 // px por tarjeta (approx)
 
   return (
     <section className="py-14 overflow-hidden">
@@ -54,13 +60,14 @@ export function SponsorsCarousel({ sponsors }: Props) {
           <div className="overflow-hidden">
             <div
               className="flex gap-5 transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(calc(-${current * (CARD_W + 20)}px))` }}
+              style={{ transform: `translateX(calc(-${current * (cardW + 20)}px))` }}
             >
               {items.map((sponsor, i) => {
                 const card = (
                   <div
                     key={`${sponsor.id}-${i}`}
-                    className="flex-shrink-0 w-[280px] group"
+                    className="flex-shrink-0 group"
+                    style={{ width: cardW }}
                   >
                     <div className="relative h-40 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
                       {/* Brillo en hover */}
@@ -78,7 +85,7 @@ export function SponsorsCarousel({ sponsors }: Props) {
                 )
 
                 return sponsor.link ? (
-                  <Link href={sponsor.link} target="_blank" rel="noopener noreferrer" key={`${sponsor.id}-${i}`} className="flex-shrink-0 w-[280px] group block">
+                  <Link href={sponsor.link} target="_blank" rel="noopener noreferrer" key={`${sponsor.id}-${i}`} className="flex-shrink-0 group block" style={{ width: cardW }}>
                     <div className="relative h-40 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#c9a227]/5 to-transparent" />
                       <img
@@ -92,7 +99,7 @@ export function SponsorsCarousel({ sponsors }: Props) {
                     </p>
                   </Link>
                 ) : (
-                  <div key={`${sponsor.id}-${i}`} className="flex-shrink-0 w-[280px] group">
+                  <div key={`${sponsor.id}-${i}`} className="flex-shrink-0 group" style={{ width: cardW }}>
                     <div className="relative h-40 rounded-sm bg-[#111] border border-white/5 group-hover:border-[#c9a227]/40 transition-all duration-300 flex items-center justify-center p-5 overflow-hidden">
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#c9a227]/5 to-transparent" />
                       <img

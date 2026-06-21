@@ -15,6 +15,7 @@ export interface Flayer {
   id: string
   image: string
   link: string | null
+  buttonLabel: string | null
   active: boolean
   position: number
 }

@@ -31,12 +31,12 @@ export function HeroBanner({ banners }: HeroBannerProps) {
         src={banner.image}
         alt={banner.title ?? 'Banner'}
         fill
-        className="object-cover opacity-60 transition-opacity duration-700"
+        className="object-cover opacity-90 transition-opacity duration-700"
         priority
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
       {/* Content */}
       <div className="absolute inset-0 flex items-center">
@@ -52,7 +52,7 @@ export function HeroBanner({ banners }: HeroBannerProps) {
             )}
             {banner.link && (
               <Link href={banner.link} className="btn-primary inline-flex">
-                Explorar colección
+                {banner.buttonLabel ?? 'Explorar colección'}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

@@ -11,7 +11,7 @@ export default function AdminBannersPage() {
   const [banners, setBanners] = useState<Banner[]>([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState<Banner | null>(null)
-  const [form, setForm] = useState({ title: '', subtitle: '', image: '', link: '', active: true, position: 0 })
+  const [form, setForm] = useState({ title: '', subtitle: '', image: '', link: '', buttonLabel: '', active: true, position: 0 })
 
   const load = async () => {
     const data = await fetch('/api/admin/banners').then((r) => r.json())
@@ -22,13 +22,13 @@ export default function AdminBannersPage() {
 
   const openNew = () => {
     setEditing(null)
-    setForm({ title: '', subtitle: '', image: '', link: '', active: true, position: banners.length })
+    setForm({ title: '', subtitle: '', image: '', link: '', buttonLabel: '', active: true, position: banners.length })
     setModalOpen(true)
   }
 
   const openEdit = (b: Banner) => {
     setEditing(b)
-    setForm({ title: b.title ?? '', subtitle: b.subtitle ?? '', image: b.image, link: b.link ?? '', active: b.active, position: b.position })
+    setForm({ title: b.title ?? '', subtitle: b.subtitle ?? '', image: b.image, link: b.link ?? '', buttonLabel: b.buttonLabel ?? '', active: b.active, position: b.position })
     setModalOpen(true)
   }
 
@@ -125,6 +125,10 @@ export default function AdminBannersPage() {
           <div>
             <label className="label">Link (al hacer clic)</label>
             <input className="input" placeholder="/products" value={form.link} onChange={(e) => set('link', e.target.value)} />
+          </div>
+          <div>
+            <label className="label">Texto del botón</label>
+            <input className="input" placeholder="Explorar colección" value={form.buttonLabel} onChange={(e) => set('buttonLabel', e.target.value)} />
           </div>
           <div>
             <label className="label">Posición (orden)</label>

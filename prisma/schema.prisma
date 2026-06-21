@@ -69,13 +69,14 @@ model OrderItem {
 }
 
 model Banner {
-  id       String  @id @default(cuid())
-  title    String?
-  subtitle String?
-  image    String
-  link     String?
-  active   Boolean @default(true)
-  position Int     @default(0)
+  id          String  @id @default(cuid())
+  title       String?
+  subtitle    String?
+  image       String
+  link        String?
+  buttonLabel String?
+  active      Boolean @default(true)
+  position    Int     @default(0)
 }
 
 model Sponsor {

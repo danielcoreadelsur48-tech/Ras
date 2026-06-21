@@ -89,9 +89,10 @@ model Sponsor {
 }
 
 model Flayer {
-  id       String  @id @default(cuid())
-  image    String
-  link     String?
-  active   Boolean @default(true)
-  position Int     @default(0)
+  id          String  @id @default(cuid())
+  image       String
+  link        String?
+  buttonLabel String?
+  active      Boolean @default(true)
+  position    Int     @default(0)
 }

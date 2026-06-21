@@ -44,12 +44,25 @@ export function FlayersSection({ flayers }: { flayers: Flayer[] }) {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {visible.map((flayer, i) => {
           const card = (
-            <div className={`flayer-card flayer-card-${i % FLAYER_COLORS.length} aspect-[3/4]`}>
+            <div className={`flayer-card flayer-card-${i % FLAYER_COLORS.length} aspect-[3/4] relative`}>
               <img
                 src={flayer.image}
                 alt="Flayer"
                 className="w-full h-full object-cover"
               />
+              {flayer.buttonLabel && flayer.link && (
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center px-4">
+                  <a
+                    href={flayer.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary text-sm px-5 py-2 rounded"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {flayer.buttonLabel}
+                  </a>
+                </div>
+              )}
             </div>
           )
 

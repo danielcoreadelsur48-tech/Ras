@@ -10,7 +10,7 @@ export default function AdminFlayersPage() {
   const [flayers, setFlayers] = useState<Flayer[]>([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState<Flayer | null>(null)
-  const [form, setForm] = useState({ image: '', link: '', active: true, position: 0 })
+  const [form, setForm] = useState({ image: '', link: '', buttonLabel: '', active: true, position: 0 })
 
   const load = async () => {
     const data = await fetch('/api/admin/flayers').then((r) => r.json())
@@ -26,13 +26,13 @@ export default function AdminFlayersPage() {
       return
     }
     setEditing(null)
-    setForm({ image: '', link: '', active: true, position: flayers.length })
+    setForm({ image: '', link: '', buttonLabel: '', active: true, position: flayers.length })
     setModalOpen(true)
   }
 
   const openEdit = (f: Flayer) => {
     setEditing(f)
-    setForm({ image: f.image, link: f.link ?? '', active: f.active, position: f.position })
+    setForm({ image: f.image, link: f.link ?? '', buttonLabel: f.buttonLabel ?? '', active: f.active, position: f.position })
     setModalOpen(true)
   }
 
@@ -124,6 +124,10 @@ export default function AdminFlayersPage() {
           <div>
             <label className="label">Link (destino al hacer click)</label>
             <input className="input" placeholder="https://ejemplo.com" value={form.link} onChange={(e) => set('link', e.target.value)} />
+          </div>
+          <div>
+            <label className="label">Texto del botón</label>
+            <input className="input" placeholder="Ver más" value={form.buttonLabel} onChange={(e) => set('buttonLabel', e.target.value)} />
           </div>
           <div>
             <label className="label">Posición (orden)</label>
